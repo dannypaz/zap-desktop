@@ -24,6 +24,7 @@ import themes from '@zap/renderer/themes'
 import getDbName from '@zap/utils/db'
 import ZapMenuBuilder from './menuBuilder'
 import ZapController from './controller'
+import createBackupService from './walletBackup/service'
 import ZapUpdater from './updater'
 import ZapMigrator from './migrator'
 
@@ -269,6 +270,9 @@ app.on('ready', async () => {
   // Initialise the application.
   zap = new ZapController(mainWindow)
   zap.init({ theme: theme ? theme.name : undefined })
+
+  // initialize backup system
+  createBackupService(mainWindow)
 
   // Initialise the application menus.
   menuBuilder = new ZapMenuBuilder(mainWindow)

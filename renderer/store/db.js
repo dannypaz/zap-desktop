@@ -65,6 +65,10 @@ export const getDb = name => {
     autopay: 'id',
   })
 
+  db.version(4).stores({
+    backup: 'id',
+  })
+
   /**
    * @class Wallet
    * Wallet helper class.
